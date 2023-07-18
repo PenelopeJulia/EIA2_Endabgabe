@@ -1,8 +1,9 @@
 <!-- /*
-Eisdealer
-EIA 2 - Endabgabe
+Eisdealer-Simulator
 Penelope Vogel, 270002, MKB2
-In Zusammenarbeit mit Julia Mamani, Evelin Sinner und Anna-Lena Jörger
+In Zusammenarbeit mit Julia Mamani, Evelin Sinner, Anna-Lena Jörger
+
+Add following Link to URL in Browser: ?https://webuser.hs-furtwangen.de/~vogelpen/Database/
 */ -->
 
 <!DOCTYPE html>
@@ -10,47 +11,47 @@ In Zusammenarbeit mit Julia Mamani, Evelin Sinner und Anna-Lena Jörger
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Endabgabe: Eisdealer</title>
+    <title>Eisdealer-Simulator</title>
     <link rel="stylesheet" href="eisdealer.css">
-    <script src="main.js"></script>
+    <script src="dist/interfaces/Angebot.js"></script>
+    <script src="dist/Vector.js"></script>
+    <script src="dist/Images.js"></script>
+    <script src="dist/Entity.js"></script>
+    <script src="dist/Customer.js"></script>
+    <script src="dist/Table.js"></script>
+    <script src="dist/ToppingBucket.js"></script>
+    <script src="dist/SauceBucket.js"></script>
+    <script src="dist/IceBucket.js"></script>
+    <script src="dist/Simulator.js"></script>
+    <script src="dist/Data.js"></script>
 </head>
 <body>
+<div id="main">
     <div id="container1">
         <header>
             <h1>Eisdealer-Game</h1>
-            <p>Angebot</p>
+            <p>Menu Angebot</p>
             <form id="auswahlMenu">
-                <div class="menuAngebot">
-        
-                </div>
                 <br>
                 <br>
                 <div class="nameAngebot">
                     <label for="aname">1. Name</label>
-                    <input type="text" id="aname" name="aname" placeholder="Gib hier den Namen deines Angebots an :)" >
+                    <input type="text" id="aname" name="aname" placeholder="Gib hier ein Name des Angebot ein" required >
                 </div>
                 <br>
-                <div class="anzahlKugel">
-                    <label for="kugel">2. Anzahl der Kugel:</label>
-                    <select name="anzahl" id="anzahl">
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                    </select>
-                </div>
                 <br>
                 <div class="eisSorten">
-                    <label for="eissorten">3. Eissorten  (Bitte nur Anzahl der ausgewälten Kugeln) </label> 
+                    <label for="eissorten">2. Eissorten </label>
                     <br>
                     <br>
                     <input type="checkbox" name="vanille" id="vanille">
                     <label for="vanille">Vanille</label>
                     <input type="checkbox" name="schoko" id="schoko">
-                    <label for="schoco">Schokolade</label>
-                    <input type="checkbox" name="karamel" id="karamel">
-                    <label for="karamel">Karamel</label>
-                    <input type="checkbox" name="pistazio" id="pistazio">
-                    <label for="pistazio">Pistazie</label> 
+                    <label for="schoko">Schokolade</label>
+                    <input type="checkbox" name="karamell" id="karamell">
+                    <label for="karamell">Karamell</label>
+                    <input type="checkbox" name="pistazie" id="pistazie">
+                    <label for="pistazie">Pistazie</label>
                     <br>
                     <br>
                     <input type="checkbox" name="erdbeer" id="erdbeer">
@@ -64,45 +65,48 @@ In Zusammenarbeit mit Julia Mamani, Evelin Sinner und Anna-Lena Jörger
                 </div>
                 <br>
                 <div class="saucenSelect">
-                    <label for="saucen">4. Saucen: </label>
+                    <label for="saucen">3. Saucen: </label>
                     <select name="sauce" id="sauce">
-                        <option value="karamel">Karamel</option>
+                        <option value="karamel">Karamell</option>
                         <option value="schokolade">Schokolade</option>
                         <option value="himbeere">Himbeere</option>
                     </select>
                 </div>
                 <br>
                 <div class="toppingAuswahl">
-                    <label for="toppings">5. Topping</label>
+                    <label for="toppings">4. Topping</label>
                     <br>
                     <br>
-                    <input type="radio" name="topping" id="keks">
+                    <input type="radio" checked name="topping" id="keks" value="keks">
                     <label for="keks">Keks</label>
-                    <input type="radio" name="topping" id="sahne">
+                    <input type="radio" name="topping" id="sahne" value="sahne">
                     <label for="sahne">Sahne</label>
-                    <input type="radio" name="topping" id="mms">
+                    <input type="radio" name="topping" id="mms" value="mms">
                     <label for="mms">M&Ms</label>
                 </div>
                 <br>
                 <br>
                 <div class="preis">
-                        <legend> 6. Wie hoch soll der Preis sein?</legend>
+                        <legend> 5. Wie hoch soll der Preis sein?</legend>
                         <br>
                         <span id="slider">
-                        <span>
                         1 Euro
                         <input type="range" name="price" min="1" max="7" step="1" value="1">
                         7 Euro
                         </span>
                 </div>
-                <button type="button" id="start">START</button>
+                <button type="submit" id="save">Angebot speichern</button>
+                <button type="button" id="startgame" formnovalidate>Zum Spiel</button>
             </form>
-        </header>
-    </div>
-    <div id="container2">
-        <main>
 
-        </main>
-    </div> 
+        </header>
+
+    </div>
+    <div id="menu"></div>
+    <div id="container2">
+            <canvas id="simulator" height="800" width="800"></canvas>
+    </div>
+
+</div>
 </body>
 </html>
